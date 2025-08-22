@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { useAuth } from "@/context/AuthContext";
 import { logout } from "@/lib/auth";

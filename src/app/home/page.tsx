@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AboutMe } from "@/components/home/Aboutme";
 import HeaderComponent from "@/components/home/Header";
 import Terapias from "@/components/home/Terapias";

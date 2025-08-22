@@ -1,5 +1,5 @@
 import "./styles/cardTerapia.css";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function CardTerapia({ title = "", img = "", description = "" }) {
   return (
     <section className="container-2 grid grid-cols-5 gap-3">

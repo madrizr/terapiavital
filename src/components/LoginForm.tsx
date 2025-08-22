@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { loginWithEmail, signInWithGoogle } from "../lib/auth";
 import { useRouter } from "next/navigation"; // ✅ CORRECTO en App Router
