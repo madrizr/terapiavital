@@ -13,5 +13,9 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
-  height: 260vh;
+}
+@media (min-width: 960px) {
+  .fondo-terapias {
+    height: 280vh;
+  }
 }

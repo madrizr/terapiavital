@@ -6,7 +6,7 @@ export const AboutMe = () => {
   return (
     <section className="bg-white font-sans">
       <div className="container mx-auto px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Columna de Información */}
           <div className=" md:text-left">
             <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-4">

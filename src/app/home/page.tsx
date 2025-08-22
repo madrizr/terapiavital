@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AboutMe } from "@/components/home/Aboutme";
 import HeaderComponent from "@/components/home/Header";
+import Servicios from "@/components/home/Servicios";
 import Terapias from "@/components/home/Terapias";
 import Navbar from "@/components/layout/Navbar";
 import { useAuth } from "@/context/AuthContext";
@@ -57,6 +58,7 @@ function HomePage() {
       <HeaderComponent />
       <AboutMe />
       <Terapias />
+      <Servicios />
     </>
   );
 }

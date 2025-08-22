@@ -1,0 +1,95 @@
+.parent section {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 13px;
+}
+.parent {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  height: auto;
+}
+
+.div1 {
+  grid-column: span 1;
+  grid-row: auto;
+  grid-column-start: 1;
+  grid-row-start: auto;
+  display: none;
+  overflow: hidden;
+}
+.div1-alternate {
+  grid-column: span 1;
+  grid-row: auto;
+  grid-column-start: 1;
+  grid-row-start: auto;
+  display: block;
+  overflow: hidden;
+}
+
+.div2 {
+  grid-column: span 1;
+  grid-row: auto;
+  grid-column-start: 1;
+  grid-row-start: auto;
+
+  overflow: hidden;
+}
+
+.div3 {
+  grid-column: span 1;
+  grid-row: auto;
+  grid-column-start: 1;
+  grid-row-start: auto;
+
+  overflow: hidden;
+}
+
+.div1 img {
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+}
+.div2,
+.div3,
+.div1-alternate img {
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  height: 100%;
+  box-sizing: border-box;
+  object-fit: cover;
+}
+
+@media (min-width: 1000px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px;
+    height: 600px;
+  }
+  .div1-alternate {
+    display: none;
+  }
+  .div1 {
+    grid-column: span 2 / span 2;
+    grid-row: span 6 / span 6;
+    display: block;
+    overflow: hidden;
+  }
+
+  .div2 {
+    grid-column: span 4 / span 4;
+    grid-row: span 3 / span 3;
+    grid-column-start: 3;
+    overflow: hidden;
+  }
+
+  .div3 {
+    grid-column: span 4 / span 4;
+    grid-row: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 4;
+
+    overflow: hidden;
+  }
+}
