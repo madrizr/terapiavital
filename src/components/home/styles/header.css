@@ -1,0 +1,17 @@
+.fondo {
+  background: url("/fondo2.jpg") no-repeat center center;
+  background-size: cover; /* hace que la imagen cubra todo el contenedor */
+  background-attachment: fixed; /* opcional: efecto parallax */
+  width: 100%;
+  color: white; /* para que el texto sea visible */
+}
+
+.fondo-terapias {
+  background: url("/fondo.png") no-repeat center center;
+  background-size: cover; /* hace que la imagen cubra todo el contenedor */
+  object-fit: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 260vh;
+}
