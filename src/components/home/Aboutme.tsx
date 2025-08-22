@@ -32,14 +32,15 @@ export const AboutMe = () => {
             <p className="text-gray-600 mb-6 leading-relaxed">
               Jose Madriz, especialista en el área de la acupuntura con mas de
               15 años de experiencia en la utilización de este método de
-              sanación. Comenzó sus estudios en la "Fundación de escuelas Nei
-              Jing", instituto internacional. En la sede de Caracas Venezuela
-              recibió clases por tres años de fisiopatología y tratamiento en
-              medicina tradicional china además de horas de práctica y cursos de
-              apoyo. Con la finalidad de desarrollar aún mas sus conocimientos,
-              por tres años cursó estudios en la academia Herencia
-              Luminosa-CEMETC (Centro de estudios de medicina tradicional china)
-              vinculado con la Universidad Santiago de Compostela, España.
+              sanación. Comenzó sus estudios en la &quot;Fundación de escuelas
+              Nei Jing&quot;, instituto internacional. En la sede de Caracas
+              Venezuela recibió clases por tres años de fisiopatología y
+              tratamiento en medicina tradicional china además de horas de
+              práctica y cursos de apoyo. Con la finalidad de desarrollar aún
+              mas sus conocimientos, por tres años cursó estudios en la academia
+              Herencia Luminosa-CEMETC (Centro de estudios de medicina
+              tradicional china) vinculado con la Universidad Santiago de
+              Compostela, España.
             </p>
             <p className="text-gray-600 mb-8 leading-relaxed">
               Formaciones profesionales complementarias: terapia auricular,
