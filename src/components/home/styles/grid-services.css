@@ -23,6 +23,7 @@
   grid-row: auto;
   grid-column-start: 1;
   grid-row-start: auto;
+  max-height: 500px;
   display: block;
   overflow: hidden;
 }
@@ -31,6 +32,7 @@
   grid-column: span 1;
   grid-row: auto;
   grid-column-start: 1;
+  max-height: 500px;
   grid-row-start: auto;
 
   overflow: hidden;
@@ -40,22 +42,28 @@
   grid-column: span 1;
   grid-row: auto;
   grid-column-start: 1;
+  max-height: 500px;
   grid-row-start: auto;
 
   overflow: hidden;
 }
-
+.div1-alternate img {
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+  height: 300px;
+}
 .div1 img {
   border-top-right-radius: 13px;
   border-top-left-radius: 13px;
+  height: 300px;
 }
-.div2,
-.div3,
-.div1-alternate img {
-  border-top-left-radius: 13px;
-  border-bottom-left-radius: 13px;
-  height: 100%;
-  box-sizing: border-box;
+
+.div2 img {
+  height: 250px;
+  object-fit: cover;
+}
+.div3 img {
+  height: 250px;
   object-fit: cover;
 }
 
@@ -91,5 +99,11 @@
     grid-row-start: 4;
 
     overflow: hidden;
+  }
+  .div2 img {
+    height: auto;
+  }
+  .div3 img {
+    height: auto;
   }
 }
