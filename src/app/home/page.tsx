@@ -1,9 +1,12 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AboutMe } from "@/components/home/Aboutme";
+import Contact from "@/components/home/contact";
 import HeaderComponent from "@/components/home/Header";
+import InfoServices from "@/components/home/Info-services";
 import Servicios from "@/components/home/Servicios";
 import Terapias from "@/components/home/Terapias";
+import Testimonials from "@/components/home/Testimonials";
 import Navbar from "@/components/layout/Navbar";
 import { useAuth } from "@/context/AuthContext";
 import { logout } from "@/lib/auth";
@@ -59,6 +62,9 @@ function HomePage() {
       <AboutMe />
       <Terapias />
       <Servicios />
+      <InfoServices />
+      <Testimonials />
+      <Contact />
     </>
   );
 }

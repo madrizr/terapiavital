@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./styles/grid-services.css";
 import "./styles/services.css";
 function Servicios() {
@@ -87,7 +88,7 @@ function Servicios() {
         </section>
         <section className="div3">
           <div className="grid lg:grid-cols-5 lg:gap-4 h-full grid-cols-1 grid-rows-2 w-full ">
-            <div className="lg:col-span-2 h-full w-full bg-black">
+            <div className="lg:col-span-2 h-full w-full ">
               <div className="col-span-2 h-full ">
                 <img
                   src="images/servicios/personalizado.webp"
@@ -107,6 +108,18 @@ function Servicios() {
             </div>
           </div>
         </section>
+      </div>
+      <div className="flex justify-center  p-4 ">
+        <div className="md:w-100 w-full">
+          <Link href={"#header"}>
+            <button
+              type="submit"
+              className="w-full cursor-pointer bg-teal-600 text-white py-3 rounded-lg hover:bg-teal-700 transition-colors"
+            >
+              PIDA SU CITA AHORA
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );

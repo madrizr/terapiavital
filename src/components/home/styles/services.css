@@ -1,0 +1,38 @@
+.parent-2 {
+  display: block;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.div7,
+.div10 {
+  width: 400px;
+  height: 400px;
+  justify-content: center;
+}
+
+@media (min-width: 990px) {
+  .parent-2 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+  .div7 {
+    display: flex;
+    justify-content: center;
+    grid-column: 1 / 2;
+  }
+  .div8 {
+    grid-column: 2 /9;
+  }
+  .div9 {
+    grid-column: 1 / 7;
+  }
+  .div10 {
+    grid-column: 7 / 9;
+  }
+}
