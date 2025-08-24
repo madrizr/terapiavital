@@ -14,7 +14,7 @@ export function TestimonialCard({
             className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-teal-600 bg-gray-100"
             src={img}
           />
-          <p className="leading-relaxed">"{descripton}"</p>
+          <p className="leading-relaxed">&ldquo;{descripton}&ldquo;</p>
           <span
             className="inline-block h-1 w-10 rounded mt-6 mb-4"
             style={{ background: "#BA9F33" }}
