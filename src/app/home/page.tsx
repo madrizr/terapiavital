@@ -7,6 +7,7 @@ import InfoServices from "@/components/home/Info-services";
 import Servicios from "@/components/home/Servicios";
 import Terapias from "@/components/home/Terapias";
 import Testimonials from "@/components/home/Testimonials";
+import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { useAuth } from "@/context/AuthContext";
 import { logout } from "@/lib/auth";
@@ -65,6 +66,7 @@ function HomePage() {
       <InfoServices />
       <Testimonials />
       <Contact />
+      <Footer />
     </>
   );
 }

@@ -83,7 +83,7 @@ export default function FormConsulta() {
           name="motivo"
           value={formData.motivo}
           onChange={handleChange}
-          placeholder="Cuénteme brevemente el motivo de su consulta..."
+          placeholder="Haga una breve exposición del motivo de su consulta..."
           rows={4}
           required
         ></textarea>

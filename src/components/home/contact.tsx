@@ -1,9 +1,11 @@
+import { Clock, Clock10, Mail, MapPin, Phone } from "lucide-react";
+
 function Contact() {
   return (
     <section className="text-gray-600 body-font relative">
       <div className="absolute inset-0 bg-gray-300">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15667.383754842627!2d-63.855117822477716!3d10.974998910374085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c318eec774ecea9%3A0x38907f65d3970593!2sResidencias%204%20de%20Mayo!5e0!3m2!1ses-419!2sus!4v1755919019264!5m2!1ses-419!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.917048708723!2d-63.84701072638264!3d10.969633755603134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c318ebe24b0f599%3A0x386f6440c22a170f!2sResidencias%20Las%20Margaritas!5e0!3m2!1ses-419!2sve!4v1756085031706!5m2!1ses-419!2sve"
           width="100%"
           height="100%"
           style={{
@@ -23,26 +25,27 @@ function Contact() {
           </h2>
           <div className="py-4">
             <div className="flex">
-              <span>icon</span>
+              <MapPin size={70} />
               <p className="leading-relaxed ml-3 mb-5 text-gray-600">
-                Residencias 4 de mayo
+                Avda Terranova, sector genovés, residencias las Margaritas piso
+                8 consultorio 86 Margarita edo. Nva. Esparta.
               </p>
             </div>
             <div className="flex">
-              <span>icon</span>
+              <Clock10 size={50} />
               <p className="leading-relaxed ml-3 mb-5 text-gray-600">
                 Atendemos a domicilio. Lunes a Viernes 9:30am a 3:00pm. Sabados
                 9:30am a 2:00pm.
               </p>
             </div>
             <div className="flex">
-              <span>icon</span>
+              <Phone />
               <p className="leading-relaxed ml-3 mb-5 text-gray-600">
                 +58 (0414) 259 2176
               </p>
             </div>
             <div className="flex">
-              <span>icon</span>
+              <Mail />
               <p className="leading-relaxed ml-3 mb-5 text-gray-600">
                 terapiavital12@gmail.com
               </p>

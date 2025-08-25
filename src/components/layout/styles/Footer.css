@@ -1,0 +1,22 @@
+.footer {
+  background-color: #dddddd;
+  color: #696969;
+  font-size: 0.8rem;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer a {
+  color: black;
+  font: 800;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.footer a:hover {
+  color: #248b91;
+  transition: all 0.3s;
+}

@@ -1,7 +1,7 @@
 function InfoServices() {
   return (
     <>
-      <div className="parent-2 p-5">
+      <div className="parent-2 p-5 mt-5">
         <div className="div7 ">
           <img
             src="https://acupunturavital.netlify.app/assets/modelo.png"
