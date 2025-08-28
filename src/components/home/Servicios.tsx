@@ -29,7 +29,7 @@ function Servicios() {
               <hr className="mx-1 my-3" style={{ color: "#BA9F33" }} />
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Prestamos atención en la comodidad de su residencia, trasladamos
-                a su hogar todo el intrumental para un óptimo tratamiento
+                a su hogar todo el instrumental para un óptimo tratamiento
                 incluso camilla portatil.
               </p>
             </div>
@@ -63,7 +63,7 @@ function Servicios() {
             <div className="lg:col-span-2 h-full w-full bg-black">
               <div className="w-full h-full ">
                 <img
-                  src="images/servicios/camilla.webp"
+                  src="images/servicios/consultorio.jpg"
                   alt="per"
                   width={"100%"}
                   height={"100%"}
@@ -74,8 +74,8 @@ function Servicios() {
               <h3 className="font-medium text-xl">Consultorio</h3>
               <hr className="mx-1 my-3" style={{ color: "#BA9F33" }} />
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Prestamos servicios en Residencias 4 de Mayo - Av. 4 de Mayo
-                Porlamar.
+                prestamos servicio en la avda Terranova, sector Genovés,
+                residencias las Margaritas piso 8 consultorio 86.
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Horarios comprendidos:{" "}

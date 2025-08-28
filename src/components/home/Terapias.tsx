@@ -67,7 +67,7 @@ Auriculoterapia"
                 img="images/icons-terapia/track.svg"
                 title="Acupuntura veterinaria
 "
-                description="Es un antiguo método de sanación que ayuda a los animales a superar enfermedades, el principio de su aplicación es el mismo que en humanos."
+                description="Es un antiguo método de sanación que ayuda a los animales a superar enfermedades, el principio de su aplicación es el mismo que en humanos y el indice de efectividad es cuatro veces mayor."
               />
             </div>
           </section>

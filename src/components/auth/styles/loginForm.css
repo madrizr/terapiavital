@@ -1,0 +1,21 @@
+.form-login {
+  border-radius: 10px;
+  width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.container-login {
+  background-image: linear-gradient(
+    to right bottom,
+    #121314,
+    #171e22,
+    #182a30,
+    #18363c,
+    #164346
+  );
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

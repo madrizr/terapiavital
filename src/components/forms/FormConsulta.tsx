@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import "./styles/forms.css";
+import BtnPrimary from "../shared/buttons/btnPrimary";
+import InputText from "../shared/inputs/input-text";
+import TextArea from "../shared/inputs/text-area";
 export default function FormConsulta() {
   const [formData, setFormData] = useState({
     nombre: "",
@@ -30,7 +33,7 @@ export default function FormConsulta() {
       {/* Nombre */}
       <div className="grid lg:gap-5 lg:grid-cols-2">
         <div>
-          <input
+          <InputText
             type="text"
             name="nombre"
             value={formData.nombre}
@@ -40,7 +43,7 @@ export default function FormConsulta() {
           />
         </div>
         <div>
-          <input
+          <InputText
             type="email"
             name="email"
             value={formData.email}
@@ -54,7 +57,7 @@ export default function FormConsulta() {
       {/* Teléfono */}
       <div className="grid lg:gap-5 lg:grid-cols-2">
         <div>
-          <input
+          <InputText
             type="tel"
             name="telefono"
             value={formData.telefono}
@@ -66,36 +69,31 @@ export default function FormConsulta() {
 
         {/* Ciudad */}
         <div>
-          <input
+          <InputText
             type="text"
             name="ciudad"
             value={formData.ciudad}
             onChange={handleChange}
             placeholder="Ciudad"
             required
-          />
+          ></InputText>
         </div>
       </div>
 
       {/* Motivo */}
       <div>
-        <textarea
+        <TextArea
           name="motivo"
           value={formData.motivo}
           onChange={handleChange}
           placeholder="Haga una breve exposición del motivo de su consulta..."
           rows={4}
           required
-        ></textarea>
+        />
       </div>
 
       {/* Botón */}
-      <button
-        type="submit"
-        className="w-full cursor-pointer bg-teal-600 text-white py-3 rounded-lg hover:bg-teal-700 transition-colors"
-      >
-        Enviar
-      </button>
+      <BtnPrimary disabled={false}> Enviar </BtnPrimary>
     </form>
   );
 }

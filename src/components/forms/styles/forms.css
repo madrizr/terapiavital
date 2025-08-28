@@ -6,40 +6,6 @@
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-input {
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-  background-color: transparent;
-  border: solid 1px rgb(0, 187, 167);
-  width: 100%;
-  margin: 0.5rem 0;
-  color: #4a5565;
-}
-textarea {
-  padding: 0.5rem 1rem;
-  border-radius: 0.2rem;
-  background-color: transparent;
-  border: solid 1px rgb(0, 187, 167);
-  width: 100%;
-  margin: 0.5rem 0;
-  color: #4a5565;
-}
-textarea::placeholder {
-  color: rgba(121, 121, 121, 0.888);
-}
-input::placeholder {
-  color: rgba(121, 121, 121, 0.888);
-}
-input:focus {
-  outline: 2px solid oklch(70.4% 0.14 182.503);
-  color: #4a5565;
-  transition: all 0.1s;
-}
-textarea:focus {
-  outline: 2px solid oklch(70.4% 0.14 182.503);
-  color: #4a5565;
-  transition: all 0.1s;
-}
 label {
   margin: 0.2rem 0;
   font-weight: 500;
@@ -55,12 +21,5 @@ label {
 @media (min-width: 1000px) {
   .form-consulta {
     width: 500px;
-  }
-
-  textarea:focus {
-    transition: all 0s;
-  }
-  textarea:focus {
-    transition: all 0s;
   }
 }

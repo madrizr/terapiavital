@@ -12,7 +12,7 @@ function InfoServices() {
         </div>
         <div className="div8 ">
           <div>
-            <h3 className="font-medium text-2xl ">Acupuntura Cosmetica</h3>
+            <h3 className="font-medium text-2xl ">Acupuntura Cosmética</h3>
             <p className="text-gray-600 my-6 leading-relaxed">
               A medida que trataba pacientes que iban regularmente a consulta,
               fui notando que su aspecto físico mejoraba así como iba mejorando

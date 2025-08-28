@@ -1,0 +1,30 @@
+textarea::placeholder {
+  color: rgba(121, 121, 121, 0.888);
+}
+input::placeholder {
+  color: rgba(121, 121, 121, 0.888);
+}
+input:focus {
+  outline: 2px solid oklch(70.4% 0.14 182.503);
+  color: #4a5565;
+  transition: all 0.1s;
+}
+textarea:focus {
+  outline: 2px solid oklch(70.4% 0.14 182.503);
+  color: #4a5565;
+  transition: all 0.1s;
+}
+label {
+  margin: 0.2rem 0;
+  font-weight: 500;
+  color: rgb(221, 221, 221);
+  display: block;
+}
+@media (min-width: 1000px) {
+  textarea:focus {
+    transition: all 0s;
+  }
+  textarea:focus {
+    transition: all 0s;
+  }
+}
