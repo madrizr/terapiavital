@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import "./styles/Navbar.css";
+import Link from "next/link";
 
 const MenuIcon = ({ className = "", ...props }) => (
   <svg
@@ -100,16 +101,16 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo */}
-        <a href="/">
+        <Link href="/">
           <Logo />
-        </a>
+        </Link>
 
         {/* Links desktop */}
         <div className="nav-links">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="nav-link">
+            <Link key={link.name} href={link.href} className="nav-link">
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -133,9 +134,9 @@ const Navbar = () => {
       {isOpen && (
         <div className="mobile-menu">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="mobile-link">
+            <Link key={link.name} href={link.href} className="mobile-link">
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
       )}
