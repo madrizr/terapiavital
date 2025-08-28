@@ -3,7 +3,7 @@ import "./styles/grid-services.css";
 import "./styles/services.css";
 function Servicios() {
   return (
-    <section>
+    <section id="servicios">
       <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-4">
         Servicios
       </h2>
@@ -49,7 +49,7 @@ function Servicios() {
             <hr className="mx-1 my-3" style={{ color: "#BA9F33" }} />
             <p className="text-gray-600 mb-6 leading-relaxed">
               Prestamos atención en la comodidad de su residencia, trasladamos a
-              su hogar todo el intrumental para un óptimo tratamiento incluso
+              su hogar todo el instrumental para un óptimo tratamiento incluso
               camilla portatil.
             </p>
             <p className="text-gray-600 mb-6 leading-relaxed">
@@ -74,7 +74,7 @@ function Servicios() {
               <h3 className="font-medium text-xl">Consultorio</h3>
               <hr className="mx-1 my-3" style={{ color: "#BA9F33" }} />
               <p className="text-gray-600 mb-6 leading-relaxed">
-                prestamos servicio en la avda Terranova, sector Genovés,
+                Prestamos servicio en la avda Terranova, sector Genovés,
                 residencias las Margaritas piso 8 consultorio 86.
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -102,7 +102,7 @@ function Servicios() {
               <h3 className="font-medium text-xl">Personalizado</h3>
               <hr className="mx-1 my-3" style={{ color: "#BA9F33" }} />
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Ofrecemos servicio en horario no habitual , fines de semana,
+                Ofrecemos servicio en horario no habitual, fines de semana,
                 nocturno y/o dias feriados.
               </p>
             </div>

@@ -89,18 +89,18 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Inicio", href: "#" },
-    { name: "Conóceme", href: "#" },
-    { name: "Servicios", href: "#" },
-    { name: "Contáctame", href: "#" },
-    { name: "Tratamientos", href: "#" },
+    { name: "Inicio", href: "/home#cita" },
+    { name: "Conóceme", href: "/home#conoceme" },
+    { name: "Servicios", href: "/home#servicios" },
+    { name: "Contáctame", href: "/home#contacto" },
+    { name: "Tratamientos", href: "/tratamientos" },
   ];
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo */}
-        <a href="#">
+        <a href="/">
           <Logo />
         </a>
 

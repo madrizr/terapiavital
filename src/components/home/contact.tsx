@@ -2,7 +2,7 @@ import { Clock, Clock10, Mail, MapPin, Phone } from "lucide-react";
 
 function Contact() {
   return (
-    <section className="text-gray-600 body-font relative">
+    <section className="text-gray-600 body-font relative" id="contacto">
       <div className="absolute inset-0 bg-gray-300">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.917048708723!2d-63.84701072638264!3d10.969633755603134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c318ebe24b0f599%3A0x386f6440c22a170f!2sResidencias%20Las%20Margaritas!5e0!3m2!1ses-419!2sve!4v1756085031706!5m2!1ses-419!2sve"

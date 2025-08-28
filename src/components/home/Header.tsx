@@ -4,7 +4,10 @@ import "./styles/header.css";
 function HeaderComponent() {
   return (
     <>
-      <section className="fondo flex lg:flex-col justify-center lg:pl-10 p-4 mt-20">
+      <section
+        className="fondo flex lg:flex-col justify-center lg:pl-10 p-4 mt-20"
+        id="cita"
+      >
         <FormConsulta />
       </section>
     </>
