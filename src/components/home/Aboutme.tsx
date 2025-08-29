@@ -48,14 +48,14 @@ export const AboutMe = () => {
               curiosos, acupuntura craneal, acupuntura veterinaria, flores de
               bach y otros.
             </p>
-            <div className="flex justify-center lg:justify-start w-full">
+            {/* <div className="flex justify-center lg:justify-start w-full">
               <a
                 href="#"
                 className="inline-flex items-center bg-teal-500 text-white font-semibold py-3 px-10 rounded-lg hover:bg-teal-600 shadow-lg"
               >
                 Ver más
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Columna de la Imagen */}

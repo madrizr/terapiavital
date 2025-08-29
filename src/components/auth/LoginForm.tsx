@@ -26,18 +26,6 @@ const LoginForm: React.FC = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    setLoading(true);
-    try {
-      await signInWithGoogle();
-      router.push("/perfil"); // ✅ redirige después de login
-    } catch (error: any) {
-      alert(error.message || "Error al iniciar con Google");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <>
       <section className="container-login">
