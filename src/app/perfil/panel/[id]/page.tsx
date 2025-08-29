@@ -73,7 +73,7 @@ export default function DetailView() {
           Client Not Found
         </h2>
         <p className="mt-2 text-gray-600">
-          The client you're looking for doesn't exist or has been removed.
+          The client youre looking for doesn't exist or has been removed.
         </p>
         <button
           onClick={() => router.push("/perfil/panel")}
