@@ -1,4 +1,3 @@
-import "./styles/tratamientosGallery.css";
 import { CardTratamiento } from "@/components/shared/cards/cardTratamiento";
 
 const treatments = [

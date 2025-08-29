@@ -7,27 +7,27 @@
   height: 700px;
 }
 
-.div1 {
+.div1-t {
   grid-column: 1 / 4;
   grid-row: 1 / 5;
 }
 
-.div2 {
+.div2-t {
   grid-column: 4 / 7;
   grid-row: 1 / 5;
 }
 
-.div4 {
+.div4-t {
   grid-column: 1 / 4;
   grid-row: 5 / 8;
 }
 
-.div5 {
+.div5-t {
   grid-column: 4 / 7;
   grid-row: 5 / 8;
 }
 
-.div6 {
+.div6-t {
   grid-column: 7 / 10;
   grid-row: 1 / 8;
 }
