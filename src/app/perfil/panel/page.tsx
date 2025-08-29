@@ -1,4 +1,5 @@
-"use client"; // 👈 necesario si estás en `app/` porque este componente usa estado y hooks
+"use client";
+// eslint-disable-next-line react/no-unescaped-entities
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
