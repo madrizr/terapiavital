@@ -76,7 +76,7 @@ function TratamientosGallery() {
   ];
   return (
     <section className="mt-10 p-5">
-      <div className="grid grid-cols-9 grid-rows-7 gap-2.5 h-[700px] w-full">
+      <div className="flex flex-col gap-4 lg:grid lg:grid-cols-9 lg:grid-rows-7 lg:gap-2.5 lg:h-[700px] w-full">
         {/* Se itera sobre el array de configuración usando .map() */}
         {galleryLayout.map(({ treatment, gridClasses }) => (
           <div key={treatment.id} className={gridClasses}>
