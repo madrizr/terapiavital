@@ -1,54 +1,60 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { EyeIcon, TrashIcon, SearchIcon, CheckIcon, XIcon } from "lucide-react";
+// ✅ TIPOS ESPECÍFICOS DE FIRESTORE
+import {
+  collection,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc,
+  QuerySnapshot, // Importado para tipado
+  DocumentData, // Importado para tipado
+} from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-// Definimos el tipo de cliente
+// ✅ 1. INTERFAZ AJUSTADA: id es string
 interface Client {
-  id: number;
+  id: string;
   name: string;
   city: string;
-  reasonForConsultation: string;
   email: string;
-  phoneNumber: string;
-  scheduledAppointments: number;
-  completedAppointments: number;
+  phone: string;
+  scheduled: number;
+  completed: number;
 }
-
-// Mock de clientes (puedes reemplazarlo con datos de una API más adelante)
-const initialClients: Client[] = [
-  {
-    id: 1,
-    name: "John Doe",
-    city: "New York",
-    reasonForConsultation: "Check-up",
-    email: "john@example.com",
-    phoneNumber: "123-456-7890",
-    scheduledAppointments: 2,
-    completedAppointments: 1,
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    city: "Los Angeles",
-    reasonForConsultation: "Therapy",
-    email: "jane@example.com",
-    phoneNumber: "987-654-3210",
-    scheduledAppointments: 3,
-    completedAppointments: 2,
-  },
-];
 
 export default function Panel() {
   const router = useRouter();
-  const [clients, setClients] = useState<Client[]>(initialClients);
+  const [clients, setClients] = useState<Client[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [editValues, setEditValues] = useState({
-    scheduledAppointments: 0,
-    completedAppointments: 0,
+    scheduled: 0,
+    completed: 0,
   });
+
+  useEffect(() => {
+    const clientsCollectionRef = collection(db, "clientes");
+
+    // ✅ 2. ON SNAPSHOT CORRECTAMENTE TIPADO (sin 'any')
+    const unsubscribe = onSnapshot(
+      clientsCollectionRef,
+      (snapshot: QuerySnapshot<DocumentData>) => {
+        const clientsData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Client[];
+        setClients(clientsData);
+        setLoading(false);
+      }
+    );
+
+    return () => unsubscribe();
+  }, []);
 
   const filteredClients = clients.filter(
     (client) =>
@@ -57,21 +63,28 @@ export default function Panel() {
       client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleDelete = (id: number) => {
-    if (window.confirm("Are you sure you want to delete this client?")) {
-      setClients(clients.filter((client) => client.id !== id));
+  const handleDelete = async (id: string) => {
+    if (window.confirm("¿Estás seguro de que quieres eliminar este cliente?")) {
+      const clientDocRef = doc(db, "clientes", id);
+
+      try {
+        await deleteDoc(clientDocRef);
+      } catch (error) {
+        console.error("Error deleting document: ", error);
+      }
     }
   };
 
-  const handleView = (id: number) => {
-    router.push(`/perfil/panel/${id}`); // ✅ usamos router de Next.js
+  const handleView = (id: string) => {
+    router.push(`/perfil/panel/${id}`);
   };
 
+  // ✅ 3. FUNCIONES CONSISTENTES CON EL TIPO 'Client'
   const startEditing = (client: Client) => {
-    setEditingId(client.id);
+    setEditingId(client.id); // client.id ya es string
     setEditValues({
-      scheduledAppointments: client.scheduledAppointments,
-      completedAppointments: client.completedAppointments,
+      scheduled: client.scheduled,
+      completed: client.completed,
     });
   };
 
@@ -79,23 +92,22 @@ export default function Panel() {
     const { name, value } = e.target;
     setEditValues({
       ...editValues,
-      [name]: parseInt(value) || 0,
+      [name]: parseInt(value, 10) || 0, // Añadido radix para parseInt
     });
   };
 
-  const saveEdit = () => {
+  const saveEdit = async () => {
     if (editingId) {
-      setClients(
-        clients.map((client) =>
-          client.id === editingId
-            ? {
-                ...client,
-                ...editValues,
-              }
-            : client
-        )
-      );
-      setEditingId(null);
+      const clientDocRef = doc(db, "clientes", editingId);
+      try {
+        await updateDoc(clientDocRef, {
+          scheduled: editValues.scheduled,
+          completed: editValues.completed,
+        });
+        setEditingId(null);
+      } catch (error) {
+        console.error("Error updating document: ", error);
+      }
     }
   };
 
@@ -103,14 +115,18 @@ export default function Panel() {
     setEditingId(null);
   };
 
+  if (loading) {
+    return <div className="p-4 text-center">Cargando clientes...</div>;
+  }
+
   return (
     <div className="bg-white shadow rounded-lg">
       <div className="px-4 py-5 sm:px-6 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-800">
-          Client Management Panel
+          Panel de Gestión de Clientes
         </h2>
         <p className="mt-1 text-sm text-gray-600">
-          View and manage all client information
+          Visualiza y gestiona toda la información de los clientes
         </p>
       </div>
       <div className="p-4">
@@ -121,7 +137,7 @@ export default function Panel() {
           </div>
           <input
             type="text"
-            placeholder="Search clients..."
+            placeholder="Buscar clientes..."
             className="pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full focus:ring-blue-500 focus:border-blue-500"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -134,14 +150,13 @@ export default function Panel() {
             <thead className="bg-gray-50">
               <tr>
                 {[
-                  "Name",
-                  "City",
-                  "Reason",
+                  "Nombre",
+                  "Ciudad",
                   "Email",
-                  "Phone",
-                  "Scheduled",
-                  "Completed",
-                  "Actions",
+                  "Teléfono",
+                  "Agendadas",
+                  "Completadas",
+                  "Acciones",
                 ].map((col) => (
                   <th
                     key={col}
@@ -161,7 +176,6 @@ export default function Panel() {
                     editingId === client.id ? "bg-blue-50" : ""
                   }`}
                 >
-                  {/* Name */}
                   <td
                     className="px-6 py-4 whitespace-nowrap cursor-pointer"
                     onClick={() =>
@@ -170,7 +184,6 @@ export default function Panel() {
                   >
                     {client.name}
                   </td>
-                  {/* City */}
                   <td
                     className="px-6 py-4 whitespace-nowrap cursor-pointer"
                     onClick={() =>
@@ -179,16 +192,7 @@ export default function Panel() {
                   >
                     {client.city}
                   </td>
-                  {/* Reason */}
-                  <td
-                    className="px-6 py-4 whitespace-nowrap cursor-pointer"
-                    onClick={() =>
-                      editingId !== client.id && handleView(client.id)
-                    }
-                  >
-                    {client.reasonForConsultation}
-                  </td>
-                  {/* Email */}
+
                   <td
                     className="px-6 py-4 whitespace-nowrap cursor-pointer"
                     onClick={() =>
@@ -197,22 +201,20 @@ export default function Panel() {
                   >
                     {client.email}
                   </td>
-                  {/* Phone */}
                   <td
                     className="px-6 py-4 whitespace-nowrap cursor-pointer"
                     onClick={() =>
                       editingId !== client.id && handleView(client.id)
                     }
                   >
-                    {client.phoneNumber}
+                    {client.phone}
                   </td>
-                  {/* Scheduled */}
                   <td className="px-6 py-4 whitespace-nowrap">
                     {editingId === client.id ? (
                       <input
                         type="number"
-                        name="scheduledAppointments"
-                        value={editValues.scheduledAppointments}
+                        name="scheduled"
+                        value={editValues.scheduled}
                         onChange={handleEditChange}
                         className="w-16 p-1 border border-gray-300 rounded"
                         min="0"
@@ -222,17 +224,16 @@ export default function Panel() {
                         className="cursor-pointer hover:bg-gray-100 p-1 rounded"
                         onClick={() => startEditing(client)}
                       >
-                        {client.scheduledAppointments}
+                        {client.scheduled}
                       </div>
                     )}
                   </td>
-                  {/* Completed */}
                   <td className="px-6 py-4 whitespace-nowrap">
                     {editingId === client.id ? (
                       <input
                         type="number"
-                        name="completedAppointments"
-                        value={editValues.completedAppointments}
+                        name="completed"
+                        value={editValues.completed}
                         onChange={handleEditChange}
                         className="w-16 p-1 border border-gray-300 rounded"
                         min="0"
@@ -242,11 +243,10 @@ export default function Panel() {
                         className="cursor-pointer hover:bg-gray-100 p-1 rounded"
                         onClick={() => startEditing(client)}
                       >
-                        {client.completedAppointments}
+                        {client.completed}
                       </div>
                     )}
                   </td>
-                  {/* Actions */}
                   <td className="px-6 py-4 whitespace-nowrap text-center">
                     <div className="flex justify-center space-x-2">
                       {editingId === client.id ? (
@@ -254,14 +254,14 @@ export default function Panel() {
                           <button
                             onClick={saveEdit}
                             className="text-green-600 hover:text-green-900"
-                            title="Save"
+                            title="Guardar"
                           >
                             <CheckIcon className="h-5 w-5" />
                           </button>
                           <button
                             onClick={cancelEdit}
                             className="text-red-600 hover:text-red-900"
-                            title="Cancel"
+                            title="Cancelar"
                           >
                             <XIcon className="h-5 w-5" />
                           </button>
@@ -271,14 +271,14 @@ export default function Panel() {
                           <button
                             onClick={() => handleView(client.id)}
                             className="text-teal-600 hover:text-teal-700 cursor-pointer"
-                            title="View details"
+                            title="Ver detalles"
                           >
                             <EyeIcon className="h-5 w-5" />
                           </button>
                           <button
                             onClick={() => handleDelete(client.id)}
                             className="text-red-600 hover:text-red-900 cursor-pointer"
-                            title="Delete"
+                            title="Eliminar"
                           >
                             <TrashIcon className="h-5 w-5" />
                           </button>
@@ -288,13 +288,13 @@ export default function Panel() {
                   </td>
                 </tr>
               ))}
-              {filteredClients.length === 0 && (
+              {filteredClients.length === 0 && !loading && (
                 <tr>
                   <td
                     colSpan={8}
                     className="px-6 py-4 text-center text-gray-500"
                   >
-                    No clients found matching your search criteria.
+                    No se encontraron clientes.
                   </td>
                 </tr>
               )}

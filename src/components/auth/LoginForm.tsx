@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState } from "react";
-import { loginWithEmail, signInWithGoogle } from "../../lib/auth";
+import { loginWithEmail } from "../../lib/auth";
 import { useRouter } from "next/navigation"; // ✅ CORRECTO en App Router
 import "./styles/loginForm.css";
 import InputText from "../shared/inputs/input-text";
