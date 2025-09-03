@@ -37,10 +37,16 @@ export default function Panel() {
     completed: 0,
   });
 
+  // ======================================================================
+  // 1. ESTADO PARA LA PAGINACIÓN
+  // ======================================================================
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 5;
+  // ======================================================================
+
   useEffect(() => {
     const clientsCollectionRef = collection(db, "clientes");
 
-    // ✅ 2. ON SNAPSHOT CORRECTAMENTE TIPADO (sin 'any')
     const unsubscribe = onSnapshot(
       clientsCollectionRef,
       (snapshot: QuerySnapshot<DocumentData>) => {
@@ -56,12 +62,29 @@ export default function Panel() {
     return () => unsubscribe();
   }, []);
 
+  // Resetear a la página 1 cuando se busca
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
   const filteredClients = clients.filter(
     (client) =>
       client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
       client.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // ======================================================================
+  // 2. LÓGICA PARA CALCULAR LOS ELEMENTOS DE LA PÁGINA ACTUAL
+  // ======================================================================
+  const totalPages = Math.ceil(filteredClients.length / ITEMS_PER_PAGE);
+  const indexOfLastClient = currentPage * ITEMS_PER_PAGE;
+  const indexOfFirstClient = indexOfLastClient - ITEMS_PER_PAGE;
+  const currentClients = filteredClients.slice(
+    indexOfFirstClient,
+    indexOfLastClient
+  );
+  // ======================================================================
 
   const handleDelete = async (id: string) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este cliente?")) {
@@ -79,9 +102,8 @@ export default function Panel() {
     router.push(`/perfil/panel/${id}`);
   };
 
-  // ✅ 3. FUNCIONES CONSISTENTES CON EL TIPO 'Client'
   const startEditing = (client: Client) => {
-    setEditingId(client.id); // client.id ya es string
+    setEditingId(client.id);
     setEditValues({
       scheduled: client.scheduled,
       completed: client.completed,
@@ -92,7 +114,7 @@ export default function Panel() {
     const { name, value } = e.target;
     setEditValues({
       ...editValues,
-      [name]: parseInt(value, 10) || 0, // Añadido radix para parseInt
+      [name]: parseInt(value, 10) || 0,
     });
   };
 
@@ -169,7 +191,8 @@ export default function Panel() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {filteredClients.map((client) => (
+              {/* SE USA 'currentClients' EN LUGAR DE 'filteredClients' */}
+              {currentClients.map((client) => (
                 <tr
                   key={client.id}
                   className={`hover:bg-gray-50 ${
@@ -301,6 +324,34 @@ export default function Panel() {
             </tbody>
           </table>
         </div>
+
+        {/* ====================================================================== */}
+        {/* 3. CONTROLES DEL PAGINADOR */}
+        {/* ====================================================================== */}
+        {totalPages > 1 && (
+          <div className="mt-4 flex justify-center items-center space-x-2">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="px-3 py-1 text-sm font-medium text-gray-700 bg-white rounded-md border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Anterior
+            </button>
+            <span className="text-sm text-gray-600">
+              Página {currentPage} de {totalPages}
+            </span>
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              className="px-3 py-1 text-sm font-medium text-gray-700 bg-white rounded-md border border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Siguiente
+            </button>
+          </div>
+        )}
+        {/* ====================================================================== */}
       </div>
     </div>
   );
