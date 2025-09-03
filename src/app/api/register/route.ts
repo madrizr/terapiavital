@@ -42,62 +42,61 @@ export const POST = async (request: Request) => {
     console.log("Documento añadido con ID: ", docRef.id);
 
     // 4. Enviar notificación por Email usando Nodemailer con Gmail
-    // try {
-    //   // Obtenemos las nuevas variables de entorno para Gmail
-    //   const gmailUser = process.env.GMAIL_USER;
-    //   const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
-    //   const adminEmail = process.env.ADMIN_EMAIL;
+    try {
+      // Obtenemos las nuevas variables de entorno para Gmail
+      const gmailUser = process.env.GMAIL_USER;
+      const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+      const adminEmail = process.env.ADMIN_EMAIL;
+      console.log(gmailAppPassword);
 
-    //   // Se comprueba que TODAS las variables necesarias existen.
-    //   if (gmailUser && gmailAppPassword && adminEmail) {
-    //     // El contenido del email no cambia, es el mismo que ya tenías
-    //     const htmlContent = `
-    //   <h1>🚨 Nuevo Registro de Mayorista - IKAMBIO</h1>
-    //   <p>Se ha registrado una nueva empresa en la plataforma.</p>
-    //   <h2>Detalles del Registro:</h2>
-    //   <ul>
-    //     <li><strong>Empresa:</strong> ${companyName}</li>
-    //     <li><strong>RIF:</strong> ${rif}</li>
-    //     <li><strong>Industria:</strong> ${industry}</li>
-    //     <li><strong>Ubicación:</strong> ${location}</li>
-    //     <li><strong>Contacto:</strong> ${contactNumber}</li>
-    //     <li><strong>Lista de Precios:</strong> <a href="${sheetsLink}">Ver Lista</a></li>
-    //     <li><strong>Comprobante RIF:</strong> <a href="${rifPublicUrl}">Ver Comprobante</a></li>
-    //   </ul>
-    // `;
+      // Se comprueba que TODAS las variables necesarias existen.
+      if (gmailUser && gmailAppPassword && adminEmail) {
+        // El contenido del email no cambia, es el mismo que ya tenías
+        const htmlContent = `
+      <h1>🚨🚨 Un Paciente ha pedido una cita - ACUPUNTURAVITAL</h1>
+      <p>Se ha registrado un nuevo paciente en la plataforma.</p>
+      <h2>Detalles del Registro:</h2>
+      <ul>
+        <li><strong>Nombre:</strong> ${name}</li>
+        <li><strong>Telefono:</strong> ${phone}</li>
+        <li><strong>Correo Electronico:</strong> ${email}</li>
+        <li><strong>Ciudad:</strong> ${city}</li>
+        <li><strong>Motivo:</strong> ${reason}</li>
+      </ul>
+    `;
 
-    //     // 1. Configura el "transporte" de Nodemailer para usar Gmail
-    //     const transporter = nodemailer.createTransport({
-    //       service: "gmail",
-    //       auth: {
-    //         user: gmailUser,
-    //         pass: gmailAppPassword,
-    //       },
-    //     });
+        // 1. Configura el "transporte" de Nodemailer para usar Gmail
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: gmailUser,
+            pass: gmailAppPassword,
+          },
+        });
 
-    //     // 2. Prepara y envía el email
-    //     await transporter.sendMail({
-    //       from: `"Notificaciones de Registro - IKAMBIO" <${gmailUser}>`, // Remitente
-    //       to: adminEmail, // Destinatario
-    //       subject: `Nuevo Registro de Mayorista: ${companyName}`, // Asunto
-    //       html: htmlContent, // Cuerpo del email en HTML
-    //     });
+        // 2. Prepara y envía el email
+        await transporter.sendMail({
+          from: `"Notificaciones de Registro - ACUPUNTURAVITAL" <${gmailUser}>`, // Remitente
+          to: adminEmail, // Destinatario
+          subject: `Nuevo registro de cita: ${name}`, // Asunto
+          html: htmlContent, // Cuerpo del email en HTML
+        });
 
-    //     console.log(
-    //       "Email de notificación enviado con éxito a través de Nodemailer."
-    //     );
-    //   } else {
-    //     // Si faltan variables, se notifica en la consola del servidor.
-    //     console.error(
-    //       "Faltan variables de entorno para Nodemailer/Gmail. No se envió el email de notificación."
-    //     );
-    //   }
-    // } catch (notificationError) {
-    //   console.error(
-    //     "Falló el bloque de notificación por email de Nodemailer:",
-    //     notificationError
-    //   );
-    // }
+        console.log(
+          "Email de notificación enviado con éxito a través de Nodemailer."
+        );
+      } else {
+        // Si faltan variables, se notifica en la consola del servidor.
+        console.error(
+          "Faltan variables de entorno para Nodemailer/Gmail. No se envió el email de notificación."
+        );
+      }
+    } catch (notificationError) {
+      console.error(
+        "Falló el bloque de notificación por email de Nodemailer:",
+        notificationError
+      );
+    }
     return NextResponse.json({
       success: true,
       message: "Registro completado con éxito.",
