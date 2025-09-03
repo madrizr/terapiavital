@@ -5,6 +5,7 @@ import "./styles/forms.css";
 import BtnPrimary from "../shared/buttons/btnPrimary";
 import InputText from "../shared/inputs/input-text";
 import TextArea from "../shared/inputs/text-area";
+import { enqueueSnackbar, SnackbarProvider } from "notistack";
 
 export default function FormConsulta() {
   const formBase = {
@@ -64,15 +65,19 @@ export default function FormConsulta() {
         body: JSON.stringify(formData),
       });
 
-      console.log(response);
-      alert("Formulario enviado ✅");
-      setFormData(formBase);
+      enqueueSnackbar(
+        "Cita solicitada exitosamente, le contactaremos proximamente.",
+        { variant: "success" }
+      );
     } catch (error) {
       console.error("Error al añadir el documento: ", error);
-      alert("Hubo un error al enviar el formulario.");
+      enqueueSnackbar("Hubo un error al enviar el formulario.", {
+        variant: "error",
+      });
     } finally {
       // Aquí se desactiva el spinner
       setIsSubmitting(false);
+      setFormData(formBase);
     }
   };
 
@@ -143,6 +148,14 @@ export default function FormConsulta() {
       <BtnPrimary disabled={!isFormValid} isLoading={isSubmitting}>
         Enviar
       </BtnPrimary>
+      <SnackbarProvider
+        variant="success"
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        autoHideDuration={2000}
+      ></SnackbarProvider>
     </form>
   );
 }

@@ -34,8 +34,6 @@ export const POST = async (request: Request) => {
       completed,
       notes: [],
     };
-    console.log(formSend);
-    console.log(formData);
 
     // 3. Guardar la información en la base de datos de Supabase
     if (!formData) throw "Formulario Invalido";
