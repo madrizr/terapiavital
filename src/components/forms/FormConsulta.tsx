@@ -152,9 +152,9 @@ export default function FormConsulta() {
         variant="success"
         anchorOrigin={{
           vertical: "top",
-          horizontal: "right",
+          horizontal: "center",
         }}
-        autoHideDuration={5000}
+        autoHideDuration={8000}
       ></SnackbarProvider>
     </form>
   );
