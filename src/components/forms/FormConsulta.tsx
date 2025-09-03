@@ -1,18 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/forms.css";
 import BtnPrimary from "../shared/buttons/btnPrimary";
 import InputText from "../shared/inputs/input-text";
 import TextArea from "../shared/inputs/text-area";
+
 export default function FormConsulta() {
-  const [formData, setFormData] = useState({
-    nombre: "",
+  const formBase = {
+    name: "",
     email: "",
-    telefono: "",
-    ciudad: "",
-    motivo: "",
-  });
+    phone: "",
+    city: "",
+    reason: "",
+  };
+  const [formData, setFormData] = useState(formBase);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isPhoneValid = formData.phone.length > 4;
+    const otherFieldsFilled =
+      formData.name && formData.email && formData.city && formData.reason;
+
+    setIsFormValid(isPhoneValid && !!otherFieldsFilled);
+  }, [formData]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,23 +32,61 @@ export default function FormConsulta() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    if (!value.startsWith("+58 ")) {
+      value = "+58 ";
+    }
+    setFormData({ ...formData, phone: value });
+  };
+
+  const handlePhoneFocus = () => {
+    if (formData.phone === "") {
+      setFormData({ ...formData, phone: "+58 " });
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    if (formData.phone.trim() === "+58") {
+      setFormData({ ...formData, phone: "" });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Datos enviados:", formData);
-    alert("Formulario enviado ✅");
+    // Aquí se activa el spinner
+    setIsSubmitting(true);
+    try {
+      if (!formData) throw "Formulario Invalido";
+
+      const response = await fetch("/api/register", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+
+      console.log(response);
+      alert("Formulario enviado ✅");
+      setFormData(formBase);
+    } catch (error) {
+      console.error("Error al añadir el documento: ", error);
+      alert("Hubo un error al enviar el formulario.");
+    } finally {
+      // Aquí se desactiva el spinner
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="form-consulta">
       <h2 className="title text-center mb-4">Pida su cita</h2>
 
-      {/* Nombre */}
+      {/* ... otros inputs ... */}
       <div className="grid lg:gap-5 lg:grid-cols-2">
         <div>
           <InputText
             type="text"
-            name="nombre"
-            value={formData.nombre}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             placeholder="Nombre"
             required
@@ -54,25 +104,24 @@ export default function FormConsulta() {
         </div>
       </div>
 
-      {/* Teléfono */}
       <div className="grid lg:gap-5 lg:grid-cols-2">
         <div>
           <InputText
             type="tel"
-            name="telefono"
-            value={formData.telefono}
-            onChange={handleChange}
-            placeholder="Telefono (+58 412)"
+            name="phone"
+            value={formData.phone}
+            onChange={handlePhoneChange}
+            onFocus={handlePhoneFocus}
+            onBlur={handlePhoneBlur}
+            placeholder="Teléfono"
             required
           />
         </div>
-
-        {/* Ciudad */}
         <div>
           <InputText
             type="text"
-            name="ciudad"
-            value={formData.ciudad}
+            name="city"
+            value={formData.city}
             onChange={handleChange}
             placeholder="Ciudad"
             required
@@ -80,11 +129,10 @@ export default function FormConsulta() {
         </div>
       </div>
 
-      {/* Motivo */}
       <div>
         <TextArea
-          name="motivo"
-          value={formData.motivo}
+          name="reason"
+          value={formData.reason}
           onChange={handleChange}
           placeholder="Haga una breve exposición del motivo de su consulta..."
           rows={4}
@@ -92,8 +140,9 @@ export default function FormConsulta() {
         />
       </div>
 
-      {/* Botón */}
-      <BtnPrimary disabled={false}> Enviar </BtnPrimary>
+      <BtnPrimary disabled={!isFormValid} isLoading={isSubmitting}>
+        Enviar
+      </BtnPrimary>
     </form>
   );
 }
