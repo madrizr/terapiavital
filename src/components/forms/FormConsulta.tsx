@@ -154,7 +154,7 @@ export default function FormConsulta() {
           vertical: "top",
           horizontal: "right",
         }}
-        autoHideDuration={2000}
+        autoHideDuration={5000}
       ></SnackbarProvider>
     </form>
   );
