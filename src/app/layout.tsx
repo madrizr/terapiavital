@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Acupuntura Vital",
+  title:
+    "Acupuntura Vital - Prestamos atención en la comodidad de su residencia",
   description:
     "Jose Madriz, especialista en el área de la acupuntura con mas de 15 años de experiencia en la utilización de este método de sanación. Comenzó sus estudios en la ‘Fundación de escuelas Nei Jing‘, instituto internacional. En la sede de Caracas Venezuela recibió clases por tres años de fisiopatología y tratamiento en medicina tradicional china además de horas de práctica y cursos de apoyo.",
 };
