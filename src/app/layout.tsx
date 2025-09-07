@@ -14,10 +14,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Acupuntura Vital - Prestamos atención en la comodidad de su residencia",
+  title: "Acupuntura Vital - Atención a domicilio en la Isla de Margarita",
+  keywords: [
+    "acupuntura a domicilio",
+    "consultorio acupuntura",
+    "acupuntura online",
+    "acupuntura margarita",
+    "jose madriz",
+    "medicina china",
+    "quiropraxia margarita",
+    "ansiedad estres",
+    "alivio del dolor",
+  ],
+  openGraph: {
+    title: "Acupuntura en la Isla de Margarita - Acupuntura Vital",
+    description:
+      "Alivio y bienestar con sesiones de acupuntura profesional en la comodidad de tu hogar.",
+    // URL de una imagen representativa de tu servicio
+    images: "/images/servicios/consultorio.jpg", // Coloca una imagen en tu carpeta /public
+  },
   description:
-    "Jose Madriz, especialista en el área de la acupuntura con mas de 15 años de experiencia en la utilización de este método de sanación. Comenzó sus estudios en la ‘Fundación de escuelas Nei Jing‘, instituto internacional. En la sede de Caracas Venezuela recibió clases por tres años de fisiopatología y tratamiento en medicina tradicional china además de horas de práctica y cursos de apoyo.",
+    "Especialista en acupuntura con 15+ años de experiencia. Ofrecemos tratamientos personalizados a domicilio en la Isla de Margarita. Alivio del dolor y bienestar.",
 };
 
 export default function RootLayout({
@@ -26,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

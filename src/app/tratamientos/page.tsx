@@ -9,6 +9,25 @@ export const metadata: Metadata = {
           Carlos Nogueira entre otros han aplicado con éxito este método de
           sanación en enfermedades tales como la impotencia, asma, insomnio,
           parálisis facial entre otras.`,
+  keywords: [
+    "acupuntura a domicilio",
+    "consultorio acupuntura",
+    "acupuntura online",
+    "acupuntura margarita",
+    "jose madriz",
+    "medicina china",
+    "quiropraxia margarita",
+    "ansiedad estres",
+    "alivio del dolor",
+    "tratamientos",
+  ],
+  openGraph: {
+    title: "Tratamientos de Acupuntura - Acupuntura Vital",
+    description:
+      "Alivio y bienestar con sesiones de acupuntura profesional en la comodidad de tu hogar.",
+    // URL de una imagen representativa de tu servicio
+    images: "/images/servicios/consultorio.jpg", // Coloca una imagen en tu carpeta /public
+  },
 };
 
 function TratamientosPage() {
