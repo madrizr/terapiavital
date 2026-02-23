@@ -7,7 +7,7 @@ const treatments = [
     description:
       "Técnica milenaria que utiliza agujas finas para estimular puntos específicos del cuerpo y restaurar el flujo de energía (Qi).",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1661864126669-1ace0fb6376f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "images/tratamientos/acupuntura.jpg",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const treatments = [
     description:
       'Terapia que aplica calor en los puntos de acupuntura utilizando la hierba "moxa" para mejorar la circulación y aliviar el dolor.',
     imageUrl:
-      "https://cdn.pixabay.com/photo/2022/08/06/15/39/city-7368852_1280.jpg",
+      "images/tratamientos/moxa.jpg",
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const treatments = [
     description:
       "Aplicación de ventosas sobre la piel para crear succión, movilizar la sangre y la energía, y aliviar la tensión muscular.",
     imageUrl:
-      "https://cdn.pixabay.com/photo/2022/08/06/15/39/city-7368852_1280.jpg",
+      "images/tratamientos/ventosa.jpg",
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const treatments = [
     description:
       "Estimulación de puntos en la oreja que se corresponden con diferentes partes del cuerpo para tratar diversas afecciones.",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1661869039200-0b1553ced257?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "images/tratamientos/auriculo.png",
   },
   {
     id: 5,
@@ -39,15 +39,7 @@ const treatments = [
     description:
       "Una forma moderna de acupuntura donde se aplica una pequeña corriente eléctrica a las agujas para potenciar el efecto terapéutico.",
     imageUrl:
-      "https://cdn.pixabay.com/photo/2023/09/13/15/41/mountain-8251186_1280.jpg",
-  },
-  {
-    id: 6,
-    name: "Masaje Tui Na",
-    description:
-      "Masaje terapéutico chino que trabaja sobre los meridianos y puntos de acupuntura para equilibrar el cuerpo y la mente.",
-    imageUrl:
-      "https://cdn.pixabay.com/photo/2022/08/06/15/39/city-7368852_1280.jpg",
+      "images/tratamientos/electropuntura.png",
   },
 ];
 
