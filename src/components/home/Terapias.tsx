@@ -47,7 +47,7 @@ function Terapias() {
   }, []);
 
   return (
-    <div ref={containerRef} className="overflow-x-hidden">
+    <div ref={containerRef} className="overflow-x-clip">
       <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-4">
         Terapias
       </h2>
