@@ -6,7 +6,7 @@ export const AboutMe = () => {
   return (
     <section className="bg-white font-sans" id="conoceme">
       <div className="container mx-auto px-6 py-16 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid grid-cols-1 gap-12 md:gap-16 items-center">
           {/* Columna de Información */}
           <div className=" md:text-left">
             <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-4">
@@ -16,7 +16,7 @@ export const AboutMe = () => {
               className="h-1.5 w-32 flex mx-auto  mt-4 mb-6 "
               style={{ background: "#BA9F33" }}
             ></div>
-            <div className="flex justify-center  w-full sm:flex md:flex lg:hidden">
+            {/* <div className="flex justify-center  w-full sm:flex md:flex lg:hidden">
               <img
                 src="https://acupunturavital.netlify.app/assets/acupuntura.png"
                 alt="Jose Madriz"
@@ -28,7 +28,7 @@ export const AboutMe = () => {
                     "https://placehold.co/600x400/cccccc/ffffff?text=Error+al+cargar";
                 }}
               />
-            </div>
+            </div> */}
             <p className="text-gray-600 mb-6 leading-relaxed">
               Jose Madriz, especialista en el área de la acupuntura con mas de
               15 años de experiencia en la utilización de este método de
@@ -59,7 +59,7 @@ export const AboutMe = () => {
           </div>
 
           {/* Columna de la Imagen */}
-          <div className="justify-center w-full sm:hidden hidden md:hidden lg:flex">
+          {/* <div className="justify-center w-full sm:hidden hidden md:hidden lg:flex">
             <img
               src="https://acupunturavital.netlify.app/assets/acupuntura.png"
               alt="Jose Madriz"
@@ -71,7 +71,7 @@ export const AboutMe = () => {
                   "https://placehold.co/600x400/cccccc/ffffff?text=Error+al+cargar";
               }}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

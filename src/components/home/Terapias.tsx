@@ -1,8 +1,53 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CardTerapia from "../shared/CardTerapia";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 function Terapias() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Only run on desktop (min-width: 1024px corresponds to Tailwind's lg breakpoint)
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      const cards = gsap.utils.toArray<HTMLElement>(".terapia-card-anim", containerRef.current);
+      
+      cards.forEach((card, i) => {
+        const isLeftToRight = i % 2 === 0;
+        
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            x: isLeftToRight ? -150 : 150,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%", // Starts animation when the top of the card is at 85% of the viewport height
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    });
+
+    return () => mm.revert();
+  }, []);
+
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       <h2 className="text-3xl text-center md:text-4xl font-bold text-gray-800 mb-4">
         Terapias
       </h2>
@@ -12,7 +57,7 @@ function Terapias() {
       ></div>
       <section className="fondo-terapias">
         <section className="p-5">
-          <section className="grid grid-cols-1 lg:grid-cols-2 mb-8">
+          <section className="terapia-card-anim grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className={false ? "col-start-2" : ""}>
               <CardTerapia
                 img="images/icons-terapia/acupuntura.svg"
@@ -21,7 +66,7 @@ function Terapias() {
               />
             </div>
           </section>
-          <section className="grid grid-cols-1 lg:grid-cols-2 mb-8">
+          <section className="terapia-card-anim grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className={true ? "col-start-2" : ""}>
               <CardTerapia
                 img="images/icons-terapia/espalda.svg"
@@ -30,7 +75,7 @@ function Terapias() {
               />
             </div>
           </section>
-          <section className="grid grid-cols-1 lg:grid-cols-2 mb-8">
+          <section className="terapia-card-anim grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className={false ? "col-start-2" : ""}>
               <CardTerapia
                 img="images/icons-terapia/belleza.svg"
@@ -42,7 +87,7 @@ function Terapias() {
               />
             </div>
           </section>
-          <section className="grid grid-cols-1 lg:grid-cols-2 mb-8">
+          <section className="terapia-card-anim grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className={true ? "col-start-2" : ""}>
               <CardTerapia
                 img="images/icons-terapia/moxa.svg"
@@ -51,7 +96,7 @@ function Terapias() {
               />
             </div>
           </section>
-          <section className="grid grid-cols-1 lg:grid-cols-2 mb-8">
+          <section className="terapia-card-anim grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className={false ? "col-start-2" : ""}>
               <CardTerapia
                 img="images/icons-terapia/oreja.svg"
@@ -61,7 +106,7 @@ Auriculoterapia"
               />
             </div>
           </section>
-          <section className="grid grid-cols-1 lg:grid-cols-2 mb-8">
+          <section className="terapia-card-anim grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className={true ? "col-start-2" : ""}>
               <CardTerapia
                 img="images/icons-terapia/track.svg"
@@ -73,7 +118,7 @@ Auriculoterapia"
           </section>
         </section>
       </section>
-    </>
+    </div>
   );
 }
 
